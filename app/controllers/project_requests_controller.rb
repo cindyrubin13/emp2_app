@@ -3,6 +3,7 @@ class ProjectRequestsController < ApplicationController
   # GET /project_requests.json
   def index
     @project_requests = ProjectRequest.all
+#@responses = Response.find_all_by_project_request_id(@project_request)
 
     respond_to do |format|
       format.html # index.html.erb

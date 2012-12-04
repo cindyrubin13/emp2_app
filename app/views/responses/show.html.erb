@@ -2,19 +2,25 @@
 
 <p>
   <b>Message:</b>
+  <!--<%= @response.message %>-->
   <%= @response.message %>
 </p>
 
 <p>
   <b>Employee:</b>
   <%= @response.employee_id %>
+  <!--<%= @response.employee_id %>-->
 </p>
 
 <p>
   <b>Project request:</b>
   <%= @response.project_request_id %>
+ <!-- <%= @response.project_request_id %>-->
 </p>
 
 
-<%= link_to 'Edit', edit_response_path(@response) %> |
-<%= link_to 'Back', responses_path %>
+
+
+
+<%= link_to 'edit', edit_project_request_response_path(@project_request, @response) %> |
+<%= link_to 'Back', project_request_responses_path(@project_request) %>

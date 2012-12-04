@@ -20,6 +20,35 @@
   <%= @employee.department %>
 </p>
 
+<p>
+  <b>Years with Company:</b>
+  <%= @employee.years_with_company %>
+</p>
+
+<p>
+  <b>Manager:</b>
+  <%= @employee.manager %>
+</p>
+
+<p>
+  <b>Position:</b>
+  <%= @employee.position %>
+</p>
+
+<p>
+  <b>Group:</b>
+  <%= @employee.group %>
+</p>
+
+<p>
+  <b>Current Skills:</b>
+  <%= @employee.current_skill %>
+</p>
+
+<p>
+  <b>Skills Interest In:</b>
+  <%= @employee.skills_interested_in %>
+</p>
 
 <%= link_to 'Edit', edit_employee_path(@employee) %> |
 <%= link_to 'Back', employees_path %>

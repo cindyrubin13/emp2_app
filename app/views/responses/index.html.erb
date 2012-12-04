@@ -15,13 +15,13 @@
     <td><%= response.message %></td>
     <td><%= response.employee_id %></td>
     <td><%= response.project_request_id %></td>
-    <td><%= link_to 'Show', response %></td>
-    <td><%= link_to 'Edit', edit_response_path(response) %></td>
-    <td><%= link_to 'Destroy', response, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'show', project_request_response_path(@project_request, response) %></td>
+    <td><%= link_to 'edit', edit_project_request_response_path(@project_request, response)%></td>
+    <td><%= link_to 'destroy', project_request_response_path(@project_request, response), method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Response', new_response_path %>
+<%= link_to 'Back to list of project requests', project_requests_path %>

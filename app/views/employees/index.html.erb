@@ -6,6 +6,14 @@
     <th>Employee email</th>
     <th>Location</th>
     <th>Department</th>
+    <th>Years With Company</th>
+    <th>Manager/Lead</th>
+    <th>Position</th>
+    <th>Group</th>
+    <th>Current skills</th>
+    <th>Skills Interested In</th>
+    <th>Post Projects</th>
+    <th>Checkout Projects</th>
     <th></th>
     <th></th>
     <th></th>
@@ -17,6 +25,14 @@
     <td><%= employee.employee_email %></td>
     <td><%= employee.location %></td>
     <td><%= employee.department %></td>
+    <td><%= employee.years_with_company %></td>
+    <td><%= employee.manager %></td>
+    <td><%= employee.position %></td>
+    <td><%= employee.group %></td>
+    <td><%= employee.current_skill %></td>
+     <td><%= employee.skills_interested_in %></td>
+     <td><%= link_to "Post?", new_project_request_path %></td>
+     <td><%= link_to "Checkout", project_requests_path %></td>
     <td><%= link_to 'Show', employee %></td>
     <td><%= link_to 'Edit', edit_employee_path(employee) %></td>
     <td><%= link_to 'Destroy', employee, method: :delete, data: { confirm: 'Are you sure?' } %></td>

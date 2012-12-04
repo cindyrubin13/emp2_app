@@ -13,8 +13,9 @@
   <tr>
     <td><%= project_request.project_help %></td>
     <td><%= project_request.employee_id %></td>
-    <td style= "padding-left: 25px">Are you interested?</td>
-    <td><a href="http://localhost:3000/responses">Expressing Interest</a></td>
+    <td style= "padding-left: 25px"></td>
+    <td><%= link_to "Are you interested?", new_project_request_response_path(project_request) %></td>
+   
     <td><%= link_to 'Show', project_request %></td>
     <td><%= link_to 'Edit', edit_project_request_path(project_request) %></td>
     <td><%= link_to 'Destroy', project_request, method: :delete, data: { confirm: 'Are you sure?' } %></td>

@@ -1,11 +1,14 @@
 EmpApp::Application.routes.draw do
-  resources :responses
+# resources :responses 
+    
+ 
+
+  resources :project_requests do
+    resources :responses
+  end
 
 
-  resources :project_requests
-
-
-  resources :employees
+  resources :employees 
 
 
   # The priority is based upon order of creation:
