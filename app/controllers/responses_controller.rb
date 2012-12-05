@@ -4,15 +4,20 @@ class ResponsesController < ApplicationController
   def index
   
  @project_request = ProjectRequest.find(params[:project_request_id])
+ @responses = @project_request.responses
 #@employees = Employee.find(params[:id])
  #@employee = Employee.find_all_by_employee_id(@employees)
 
  #@employee = Employee.find(:employee_id)
    #@response = @project_request.responses.build
     #@responses = Response.all
-@responses = Response.find_all_by_project_request_id(@project_request)
+    #@responses = @project_request.responses #new one
+#@responses = Response.find_all_by_project_request_id(@project_request)
+  @employees = Employee.all
+  #@employee = Employee.find_by_id(@employees)
+
   # @employee = Employee.find_by_employee_id(:id)
-   #employeeid = Response.find(:employee_id) 
+   #employeeid = Responseemployee.find(:employee_id) 
    #@employee = Employee.find(employeeid) 
 
    #@employee = Employee.find(@employee)
@@ -44,6 +49,7 @@ class ResponsesController < ApplicationController
   # GET /responses/new.json
   def new
    #@project_request_id = ProjectRequest.find(params[:id])
+    #@project_request = ProjectRequest.find(params[:project_request_id]) old one
     @project_request = ProjectRequest.find(params[:project_request_id])
    #@response = @project_request.build.responses
     @response = @project_request.responses.build
@@ -67,12 +73,15 @@ class ResponsesController < ApplicationController
   # POST /responses
   # POST /responses.json
   def create
-
+   @project_request = ProjectRequest.find(params[:project_request_id])
+    @response = @project_request.responses.build(params[:response])
    # @project_request_id = ProjectRequest.find(params[:id])
-    @project_request = ProjectRequest.find(params[:project_request_id])
+   # @project_request = ProjectRequest.find(params[:project_request_id])
     #@response = @project_request.create_response
+    @employees = Employee.all
     #@response = @project_request.responses.new(params[:response_id])
-     @response = @project_request.responses.build(params[:response_id])
+     #@response = @project_request.responses.build(params[:response_id])old one
+   # @response = @project_request.responses.build.(params[:response])
     #@response = Response.new(params[:response])
 
     respond_to do |format|
