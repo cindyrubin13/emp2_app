@@ -15,6 +15,8 @@
     <td><%= response.message %></td>
     <td><%= response.employee_id %></td>
     <td><%= response.project_request_id %></td>
+    
+    <td><%= link_to 'project request index page', project_requests_path %> </td>
     <td><%= link_to 'show', project_request_response_path(@project_request, response) %></td>
     <td><%= link_to 'edit', edit_project_request_response_path(@project_request, response)%></td>
     <td><%= link_to 'destroy', project_request_response_path(@project_request, response), method: :delete, data: { confirm: 'Are you sure?' } %></td>

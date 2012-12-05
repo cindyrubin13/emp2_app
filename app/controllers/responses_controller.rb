@@ -4,9 +4,18 @@ class ResponsesController < ApplicationController
   def index
   
  @project_request = ProjectRequest.find(params[:project_request_id])
-   #@response = @project_request.responses.build
-    @responses = Response.all
+#@employees = Employee.find(params[:id])
+ #@employee = Employee.find_all_by_employee_id(@employees)
 
+ #@employee = Employee.find(:employee_id)
+   #@response = @project_request.responses.build
+    #@responses = Response.all
+@responses = Response.find_all_by_project_request_id(@project_request)
+  # @employee = Employee.find_by_employee_id(:id)
+   #employeeid = Response.find(:employee_id) 
+   #@employee = Employee.find(employeeid) 
+
+   #@employee = Employee.find(@employee)
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @responses }

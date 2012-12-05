@@ -15,7 +15,7 @@
     <td><%= project_request.employee_id %></td>
     <td style= "padding-left: 25px"></td>
     <td><%= link_to "Are you interested?", new_project_request_response_path(project_request) %></td>
-   
+    <td><%= link_to "Current_responses", project_request_responses_path(project_request) %></td>
     <td><%= link_to 'Show', project_request %></td>
     <td><%= link_to 'Edit', edit_project_request_path(project_request) %></td>
     <td><%= link_to 'Destroy', project_request, method: :delete, data: { confirm: 'Are you sure?' } %></td>
