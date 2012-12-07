@@ -5,15 +5,18 @@ class ResponsesController < ApplicationController
   
  @project_request = ProjectRequest.find(params[:project_request_id])
  @responses = @project_request.responses
+ 
+
 #@employees = Employee.find(params[:id])
  #@employee = Employee.find_all_by_employee_id(@employees)
-
+#@employee = @employee.employee_name
  #@employee = Employee.find(:employee_id)
    #@response = @project_request.responses.build
     #@responses = Response.all
     #@responses = @project_request.responses #new one
 #@responses = Response.find_all_by_project_request_id(@project_request)
-  @employees = Employee.all
+# @response = Response.find(params[:id],:include => :employee)
+ #@employee = @responses.employee.employee_name
   #@employee = Employee.find_by_id(@employees)
 
   # @employee = Employee.find_by_employee_id(:id)
