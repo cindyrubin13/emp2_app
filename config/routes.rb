@@ -1,7 +1,13 @@
 EmpApp::Application.routes.draw do
+
+  resources :responses do
+    resources :request_selections
+  end
+
+
 # resources :responses 
     
-  resources :responses
+  
 
   resources :project_requests do
     resources :responses

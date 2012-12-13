@@ -1,0 +1,29 @@
+<h1>Listing request_selections</h1>
+
+<table>
+  <tr>
+    <th>Project request</th>
+    <th>Employee</th>
+    <th>Response</th>
+    <th>Comment</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @request_selections.each do |request_selection| %>
+  <tr>
+    <td><%= request_selection.project_request_id %></td>
+    <td><%= request_selection.employee_id %></td>
+    <td><%= request_selection.response_id %></td>
+    <td><%= request_selection.comment %></td>
+    <td><%= link_to 'Show', response_request_selection_path(@response, request_selection) %></td>
+    <td><%= link_to 'Edit', edit_response_request_selection_path(@response, request_selection) %></td>
+    <td><%= link_to 'Destroy', response_request_selection_path(@response, request_selection), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Request selection', new_response_request_selection_path %>
