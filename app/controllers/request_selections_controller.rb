@@ -31,6 +31,7 @@ class RequestSelectionsController < ApplicationController
   def new
     @response = Response.find(params[:response_id])
     @request_selection = @response.request_selections.build
+
     #@request_selection = RequestSelection.new
 
     respond_to do |format|
@@ -56,7 +57,7 @@ class RequestSelectionsController < ApplicationController
 
     respond_to do |format|
       if @request_selection.save
-        format.html { redirect_to response_request_selections_path @response, notice: 'Response was successfully created.' }
+        format.html { redirect_to  response_request_selections_path @response, notice: 'This developer has been selected for this project request.' }
         #format.html { redirect_to @request_selection, notice: 'Request selection was successfully created.' }
         format.json { render json: @request_selection, status: :created, location: @request_selection }
       else

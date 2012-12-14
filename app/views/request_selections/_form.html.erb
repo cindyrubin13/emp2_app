@@ -13,11 +13,11 @@
 
   <div class="field">
     <%= f.label :project_request_id %><br />
-    <%= f.number_field :project_request_id %>
+    <%= f.number_field :project_request_id, :value => @response.project_request_id %><br />
   </div>
   <div class="field">
     <%= f.label :employee_id %><br />
-    <%= f.number_field :employee_id %>
+    <%= f.number_field :employee_id, :value =>  @response.employee_id %>
   </div>
   <div class="field">
     <%= f.label :response_id %><br />
