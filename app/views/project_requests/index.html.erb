@@ -1,4 +1,4 @@
-<h1>Listing project_requests</h1>
+<h1>Listing Available Project Requests</h1>
 
 <table>
   <tr>
@@ -13,6 +13,20 @@
   <tr>
     <td><%= project_request.project_help %></td>
     <td><%= project_request.employee_id %></td>
+
+
+    <td><%= project_request.start_date.strftime("%m-%d-%y") %></td>
+    <td><%= project_request.end_date.strftime("%m-%d-%y") %></td>
+    <td><%= project_request.status %></td>
+    <td> <% if project_request.start_date <= @current_date  %> 
+      <%= project_request.status = 'Project has started' %>
+    <% else %> 
+      <%= project_request.status  = 'Project still available' %>
+    <% end %>
+    
+    <% if project_request.end_date < @current_date %>  
+      <%=   project_request.delete %>
+    <% end %>
     <td style= "padding-left: 25px"></td>
     <td><%= link_to "Are you interested?", new_project_request_response_path(project_request) %></td>
     <td><%= link_to "Current_responses", project_request_responses_path(project_request) %></td>

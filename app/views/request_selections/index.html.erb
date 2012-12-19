@@ -1,4 +1,4 @@
-<h1>Listing request_selections</h1>
+<h1>Listing Request Selections</h1>
 
 <table>
   <tr>
@@ -6,8 +6,8 @@
     <th>Employee</th>
     <th>Response</th>
     <th>Comment</th>
-    <th></th>
-    <th></th>
+    <th>Name</th>
+    <th colspan="2"></th>
     <th></th>
     <th></th>
     <th></th>
@@ -21,10 +21,10 @@
     <td><%= request_selection.employee_id %></td>
     <td><%= request_selection.response_id %></td>
     <td><%= request_selection.comment %></td>
-    <td style="color:red;"><%= request_selection.employee.employee_name %></td> 
-    <td style="color:red;"><%= "has been selected for project request number" %></td>
-    <td style="color:red;"><%= request_selection.project_request_id %></td>
-    <td><%= link_to 'Back to Responses', project_request_responses_path(request_selection.project_request_id) %></td>
+    <td class="selection"><%= request_selection.employee.employee_name %></td> 
+    <td colspan"2"; class="selection"> has been selected for project request number</td>
+    <td class="selection"><%= request_selection.project_request_id %></td>
+    <td><%= link_to 'Back to Project Requests', project_request_path(request_selection.project_request_id), method: :delete, data: { confirm: 'Are you sure?' }%></td>
     <td><%= link_to 'Show', response_request_selection_path(@response, request_selection) %></td>
     <td><%= link_to 'Edit', edit_response_request_selection_path(@response, request_selection) %></td>
     <td><%= link_to 'Destroy', response_request_selection_path(@response, request_selection), method: :delete, data: { confirm: 'Are you sure?' } %></td>

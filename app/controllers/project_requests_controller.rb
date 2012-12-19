@@ -5,6 +5,7 @@ class ProjectRequestsController < ApplicationController
     @project_requests = ProjectRequest.all
 #@responses = Response.find_all_by_project_request_id(@project_request)
 
+     @current_date = DateTime.now
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @project_requests }
@@ -15,7 +16,7 @@ class ProjectRequestsController < ApplicationController
   # GET /project_requests/1.json
   def show
     @project_request = ProjectRequest.find(params[:id])
-
+     @current_date = DateTime.now
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @project_request }
@@ -26,6 +27,7 @@ class ProjectRequestsController < ApplicationController
   # GET /project_requests/new.json
   def new
     @project_request = ProjectRequest.new
+     @current_date = DateTime.now
 
     respond_to do |format|
       format.html # new.html.erb
@@ -36,12 +38,14 @@ class ProjectRequestsController < ApplicationController
   # GET /project_requests/1/edit
   def edit
     @project_request = ProjectRequest.find(params[:id])
+     @current_date = DateTime.now
   end
 
   # POST /project_requests
   # POST /project_requests.json
   def create
     @project_request = ProjectRequest.new(params[:project_request])
+     @current_date = DateTime.now
 
     respond_to do |format|
       if @project_request.save
@@ -58,7 +62,8 @@ class ProjectRequestsController < ApplicationController
   # PUT /project_requests/1.json
   def update
     @project_request = ProjectRequest.find(params[:id])
-
+     @current_date = DateTime.now
+     
     respond_to do |format|
       if @project_request.update_attributes(params[:project_request])
         format.html { redirect_to @project_request, notice: 'Project request was successfully updated.' }

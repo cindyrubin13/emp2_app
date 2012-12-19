@@ -12,16 +12,16 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :project_request_id %><br />
-    <%= f.number_field :project_request_id, :value => @response.project_request_id %><br />
+
+    <%= f.hidden_field :project_request_id, :value => @response.project_request_id %><br />
   </div>
   <div class="field">
-    <%= f.label :employee_id %><br />
-    <%= f.number_field :employee_id, :value =>  @response.employee_id %>
+    
+    <%= f.hidden_field :employee_id, :value =>  @response.employee_id %>
   </div>
   <div class="field">
-    <%= f.label :response_id %><br />
-    <%= f.number_field :response_id %>
+    
+    <%= f.hidden_field :response_id %>
   </div>
   <div class="field">
     <%= f.label :comment %><br />

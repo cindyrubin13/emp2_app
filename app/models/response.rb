@@ -4,5 +4,6 @@ class Response < ActiveRecord::Base
   belongs_to :employee
   has_many :employees,  :through => :project_requests
   has_many :request_selections
+  belongs_to :request_selection
   accepts_nested_attributes_for :request_selections, :allow_destroy => true
 end
