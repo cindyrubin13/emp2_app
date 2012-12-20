@@ -8,7 +8,7 @@ class ProjectRequest < ActiveRecord::Base
   
   validate :check_start_date
   validate :check_end_date
-  validate :check_employee_id
+  validates_numericality_of :employee_id, :only_integer => true
 
 
 
@@ -23,11 +23,11 @@ def check_start_date
   		errors.add(:end_date, "can only be later than today")
   	end
   end
-  def check_employee_id
-    if employee_id  = "nil" 
-      errors.add(:employee_id, " Must enter a valid Employee ID")
-    end
-  end
+#  def check_employee_id
+ #   if employee_id  = "nil" 
+#      errors.add(:employee_id, " Must enter a valid Employee ID")
+  #  end
+ # end
 
   
 

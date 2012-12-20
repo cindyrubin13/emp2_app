@@ -24,7 +24,7 @@
     <td class="selection"><%= request_selection.employee.employee_name %></td> 
     <td colspan"2"; class="selection"> has been selected for project request number</td>
     <td class="selection"><%= request_selection.project_request_id %></td>
-    <td><%= link_to 'Back to Project Requests', project_request_path(request_selection.project_request_id), method: :delete, data: { confirm: 'Are you sure?' }%></td>
+    <td><%= link_to 'Show Requests', project_request_path(request_selection.project_request_id), method: :delete, data: { confirm: 'Are you sure?' }%></td>
     <td><%= link_to 'Show', response_request_selection_path(@response, request_selection) %></td>
     <td><%= link_to 'Edit', edit_response_request_selection_path(@response, request_selection) %></td>
     <td><%= link_to 'Destroy', response_request_selection_path(@response, request_selection), method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -34,4 +34,4 @@
 
 <br />
 
-<%= link_to 'New Request selection', new_response_request_selection_path %>
+<%= link_to 'Back to Project Requests', project_requests_path %>

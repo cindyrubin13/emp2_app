@@ -2,10 +2,12 @@ class RequestSelectionsController < ApplicationController
   # GET /request_selections
   # GET /request_selections.json
   def index
+   # @project_request = ProjectRequest.find(params[:project_request_id])
+    #@responses = @project_request.responses
     #@request_selections = RequestSelection.all
     @response = Response.find(params[:response_id])
-
-   @request_selections = RequestSelection.all
+    @request_selections = @response.request_selections
+   #@request_selections = RequestSelection.all
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @request_selections }
@@ -54,11 +56,13 @@ class RequestSelectionsController < ApplicationController
      @response = Response.find(params[:response_id])
     @request_selection = @response.request_selections.build(params[:request_selection])
     #@request_selection = RequestSelection.new(params[:request_selection])
-
+ 
     respond_to do |format|
       if @request_selection.save
-        format.html { redirect_to  response_request_selections_path @response, notice: 'This developer has been selected for this project request.' }
+        format.html { redirect_to response_request_selections_path @response, notice: 'This developer has been selected for this project request.' }
         #format.html { redirect_to @request_selection, notice: 'Request selection was successfully created.' }
+        #format.html { redirect_to project_request_responses_path @project_request, notice: 'Response was successfully created.' }
+
         format.json { render json: @request_selection, status: :created, location: @request_selection }
       else
         format.html { render action: "new" }
@@ -77,7 +81,7 @@ class RequestSelectionsController < ApplicationController
 
     respond_to do |format|
       if @request_selection.update_attributes(params[:request_selection])
-        format.html { redirect_to response_request_selection_path(@response, @request_selection), notice: 'Request Selection was successfully updated.' }
+        format.html { redirect_to response_request_selections_path(@response, @request_selection), notice: 'Request Selection was successfully updated.' }
 
         #format.html { redirect_to @request_selection, notice: 'Request selection was successfully updated.' }
         format.json { head :no_content }
