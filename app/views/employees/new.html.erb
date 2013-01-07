@@ -1,5 +1,84 @@
-<h1>New Employee Information</h1>
+<h1>New Employee Sign-Up Page</h1>
 
-<%= render 'form' %>
+<div class="signup">
+<%= form_for(@employee) do |f| %>
+ 
 
-<%= link_to 'Back', employees_path %>
+   <div class="field">
+    <%= f.label :employee_name %><br />
+    <%= f.text_field :employee_name %>
+    </div>
+    <div class="field">
+    <%= f.label :employee_email %><br />
+    <%= f.text_field :employee_email %>
+     </div>
+    <div class="field">
+    <%= f.label :password %><br />
+    <%= f.password_field :password %>
+    </div>
+     <div class="field">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation %>
+    </div>
+    <div class="field">
+    <%= f.label :location %><br />
+    <%= f.text_field :location %>
+  </div>
+  <div class="field">
+    <%= f.label :department %><br />
+    <%= f.text_field :department %>
+  </div>
+
+   <div class="field">
+    <%= f.label :years_with_company %><br />
+    <%= f.text_field :years_with_company %>
+  </div>
+
+  <div class="field">
+    <%= f.label :manager %><br />
+    <%= f.text_field :manager %>
+  </div>
+
+  <div class="field">
+    <%= f.label :position %><br />
+    <%= f.text_field :position %>
+  </div>
+
+  <div class="field">
+    <%= f.label :group %><br />
+    <%= f.text_field :group %>
+  </div>
+
+  <div class="field">
+    <%= f.label :current_skill %><br />
+    <%= f.text_field :current_skill %>
+  </div>
+
+  <div class="field">
+    <%= f.label :skills_interested_in %><br />
+    <%= f.text_field :skills_interested_in %>
+  </div>
+
+  
+  <div class="actions">
+    <%= f.submit "Create my account", class: "btn btn-large btn-primary" %>
+  </div>
+<% end %>
+</div>
+
+<%= link_to 'Show', @employee %> |
+
+<%= link_to 'Signout', signout_path, method: "delete" %>
+
+  
+    
+
+     
+
+
+
+
+
+
+
+<!--<%= link_to 'Back', employees_path %>-->

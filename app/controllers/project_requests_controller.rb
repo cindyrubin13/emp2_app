@@ -1,4 +1,5 @@
 class ProjectRequestsController < ApplicationController
+  before_filter :signed_in_employee, only: [:create, :destroy]
   # GET /project_requests
   # GET /project_requests.json
   def index
@@ -44,18 +45,27 @@ class ProjectRequestsController < ApplicationController
   # POST /project_requests
   # POST /project_requests.json
   def create
-    @project_request = ProjectRequest.new(params[:project_request])
-     @current_date = DateTime.now
+     @project_request = current_employee.project_requests.build(params[:project_request])
+   @current_date = DateTime.now
 
-    respond_to do |format|
-      if @project_request.save
-        format.html { redirect_to @project_request, notice: 'Project request was successfully created.' }
-        format.json { render json: @project_request, status: :created, location: @project_request }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @project_request.errors, status: :unprocessable_entity }
-      end
+    if @project_request.save
+      flash[:success] = "Project Request created!"
+      redirect_to root_url
+    else
+      render 'static_pages/home'
     end
+
+   # @project_request = ProjectRequest.new(params[:project_request])
+     
+    #respond_to do |format|
+   #   if @project_request.save
+    #    format.html { redirect_to @project_request, notice: 'Project request was successfully created.' }
+    #    format.json { render json: @project_request, status: :created, location: @project_request }
+    #  else
+    #    format.html { render action: "new" }
+    #    format.json { render json: @project_request.errors, status: :unprocessable_entity }
+    #  end
+  #  end
   end
 
   # PUT /project_requests/1

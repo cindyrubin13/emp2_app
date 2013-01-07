@@ -1,5 +1,5 @@
 <p id="notice"><%= notice %></p>
-
+<div class="showprofile">
 <p>
   <b>Employee name:</b>
   <%= @employee.employee_name %>
@@ -50,5 +50,9 @@
   <%= @employee.skills_interested_in %>
 </p>
 
-<%= link_to 'Edit', edit_employee_path(@employee) %> |
-<%= link_to 'Back', employees_path %>
+</div>
+
+<%= link_to ' Edit Profile', edit_employee_path(current_employee) %> |
+<%= link_to "Post?", new_project_request_path %> |
+<%= link_to "Checkout", project_requests_path %>  |
+<%= link_to 'Signout', signout_path, method: "delete" %>

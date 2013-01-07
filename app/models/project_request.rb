@@ -9,8 +9,8 @@ class ProjectRequest < ActiveRecord::Base
   validate :check_start_date
   validate :check_end_date
   validates_numericality_of :employee_id, :only_integer => true
-
-
+  validates :employee_id, presence: true
+  default_scope order: 'project_requests.created_at DESC'
 
 def check_start_date
     if start_date < DateTime.now

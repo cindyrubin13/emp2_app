@@ -1,4 +1,10 @@
 class EmployeesController < ApplicationController
+
+   before_filter :signed_in_employee, only: [:index, :edit, :update]
+   before_filter :signed_in_employee, only: [:edit, :update]
+   before_filter :correct_employee, only: [:edit, :update] 
+
+
   # GET /employees
   # GET /employees.json
   def index
@@ -41,32 +47,63 @@ class EmployeesController < ApplicationController
   # POST /employees.json
   def create
     @employee = Employee.new(params[:employee])
-
-    respond_to do |format|
+#@employee.password = params[:password]
+    #@employee.save!
+    #respond_to do |format|
       if @employee.save
-        format.html { redirect_to @employee, notice: 'Employee was successfully created.' }
-        format.json { render json: @employee, status: :created, location: @employee }
+       # format.html { redirect_to @employee, notice: 'Employee was successfully created.' }
+         sign_in @employee
+         flash[:success] = "Welcome to Employee App"
+
+         redirect_to @employee
+
+         #format.html { redirect_to edit_employee_path @employee, notice: 'Employee was successfully created.' }
+        #format.json { render json: @employee, status: :created, location: @employee }
       else
-        format.html { render action: "new" }
-        format.json { render json: @employee.errors, status: :unprocessable_entity }
+        render 'new'
+       # format.html { render action: "new" }
+       # format.json { render json: @employee.errors, status: :unprocessable_entity }
       end
-    end
+
+
+
+
+
+     # if @employee.save
+       # format.html { redirect_to @employee, notice: 'Employee was successfully created.' }
+      #  format.html { redirect_to edit_employee_path @employee, notice: 'Employee was successfully created.' }
+      #  format.json { render json: @employee, status: :created, location: @employee }
+     # else
+      #  format.html { render action: "new" }
+      #  format.json { render json: @employee.errors, status: :unprocessable_entity }
+     # end
+    #end
   end
 
   # PUT /employees/1
   # PUT /employees/1.json
   def update
     @employee = Employee.find(params[:id])
-
-    respond_to do |format|
-      if @employee.update_attributes(params[:employee])
-        format.html { redirect_to @employee, notice: 'Employee was successfully updated.' }
-        format.json { head :no_content }
+     if @employee.update_attributes(params[:employee])
+        flash[:success] = "Profile updated"
+        #format.html { redirect_to @employee, notice: 'Employee was successfully updated.' }
+        #format.json { head :no_content }
+        sign_in @employee
+        redirect_to @employee
       else
-        format.html { render action: "edit" }
-        format.json { render json: @employee.errors, status: :unprocessable_entity }
+        render 'edit'
+        #format.html { render action: "edit" }
+        #format.json { render json: @employee.errors, status: :unprocessable_entity }
       end
-    end
+   # respond_to do |format|
+   #   if @employee.update_attributes(params[:employee])
+   #     format.html { redirect_to @employee, notice: 'Employee was successfully updated.' }
+      #  format.json { head :no_content }
+      #else
+     #   format.html { render action: "edit" }
+     #   format.json { render json: @employee.errors, status: :unprocessable_entity }
+    #  end
+   # end
   end
 
   # DELETE /employees/1
@@ -80,4 +117,22 @@ class EmployeesController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  private
+
+    #def signed_in_employee
+     # unless signed_in?
+    #  store_location
+    #  redirect_to signin_url, notice: "Please sign in." 
+    #  end
+ #   end
+  
+   def correct_employee
+      @employee = Employee.find(params[:id])
+      redirect_to(root_path) unless current_employee?(@employee)
+    end
+
+
+
+
 end
