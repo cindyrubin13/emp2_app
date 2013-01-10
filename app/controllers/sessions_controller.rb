@@ -9,14 +9,14 @@ def create
   if employee &&  employee.authenticate(params[:session][:password])
     
       sign_in employee
-      redirect_back_or employee
+      redirect_to project_requests_path
 
     # Sign the user in and redirect to the user's show page.
   else
   	flash.now[:error] = 'Invalid email/password combination' # Not quite right!
     flash.now[:error] = "Invalid email/password combination: email #{params[:session][:employee_email].downcase}  employee #{employee} password #{params[:session][:password]}"
 
-     #flash.now[:error] = 'emplyee email' [:employee_email] 
+    
 
       render 'new'
 

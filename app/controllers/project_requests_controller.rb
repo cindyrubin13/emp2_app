@@ -46,26 +46,19 @@ class ProjectRequestsController < ApplicationController
   # POST /project_requests.json
   def create
      @project_request = current_employee.project_requests.build(params[:project_request])
-   @current_date = DateTime.now
+     @current_date = DateTime.now
 
     if @project_request.save
       flash[:success] = "Project Request created!"
-      redirect_to root_url
+      redirect_to project_requests_path
     else
-      render 'static_pages/home'
+      if @project_request.end_date < @current_date
+      redirect_to new_project_request_path(@project_request), notice: "End date must be later than today" 
+      end
+      
     end
 
-   # @project_request = ProjectRequest.new(params[:project_request])
-     
-    #respond_to do |format|
-   #   if @project_request.save
-    #    format.html { redirect_to @project_request, notice: 'Project request was successfully created.' }
-    #    format.json { render json: @project_request, status: :created, location: @project_request }
-    #  else
-    #    format.html { render action: "new" }
-    #    format.json { render json: @project_request.errors, status: :unprocessable_entity }
-    #  end
-  #  end
+   
   end
 
   # PUT /project_requests/1

@@ -31,17 +31,15 @@
     <td><%= employee.group %></td>
     <td><%= employee.current_skill %></td>
      <td><%= employee.skills_interested_in %></td>
-     <td><%= link_to "Post?", new_project_request_path %></td>
-     <td><%= link_to "Checkout", project_requests_path %></td>
-    <td><%= link_to 'Show', employee %></td>
-    <td><%= link_to 'Edit', edit_employee_path(employee) %></td>
-    <td><%= link_to 'Destroy', employee, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    
   </tr>
 <% end %>
 </table>
 
 <br />
+<%= link_to 'My Profile', employee_path(current_employee) %> |
+<%= link_to "Post?", new_project_request_path %> |
+<%= link_to 'All Requests', project_requests_path %> |
+<%= link_to 'Signout', signout_path, method: "delete" %> 
 
-<%= link_to 'Signout', signout_path, method: "delete" %> |
-<%= link_to 'New Employee', new_employee_path %>
 

@@ -3,11 +3,12 @@ EmpApp::Application.routes.draw do
   get "static_pages/home"
 
  match '/signup', to: 'employees#new'
- #root to:  'static_pages#home'
- root to: 'static_pages#home'
+ root to:  'static_pages#home'
+ #root to: 'sessions#new'
+
   match '/', to: 'static_pages#home'
   match '/signup', to: 'employees#new'
-  match '/signin',  to: 'sessions#new'
+   match '/signin',  to: 'sessions#new'
   match '/signout', to: 'sessions#destroy', via: :delete
 
   resources :responses do
@@ -15,7 +16,6 @@ EmpApp::Application.routes.draw do
   end
 
 
-# resources :responses 
     
   
 
@@ -25,8 +25,8 @@ EmpApp::Application.routes.draw do
 
 
   resources :employees 
-   resources :sessions, only: [:new, :create, :destroy]
-  #match '/signup', to: 'employees#new'
+  resources :sessions, only: [:new, :create, :destroy]
+  
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

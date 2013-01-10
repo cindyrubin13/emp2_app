@@ -1,13 +1,13 @@
 class Employee < ActiveRecord::Base
   attr_accessible :department, :employee_email, :employee_name, :location,
-  :years_with_company, :manager, :position, :group, :current_skill, :skills_interested_in, :password, :password_confirmation
+  :years_with_company, :manager, :position, :group, :current_skill, :skills_interested_in, :password, :password_confirmation, :description
   has_secure_password 
 
   has_many :project_requests, dependent: :destroy
   belongs_to :project_request
   has_many :responses, :through => :project_request
   has_many :request_selections, :through => :responses
-  #has_many :responses, through: :reverse_responses, foreign_key: "requests_id", class_name: "Responses"
+
    before_save { |employee| employee.employee_email = employee_email.downcase }
  before_save :create_remember_token 
 validates :employee_name, presence: true
@@ -24,11 +24,6 @@ validates :employee_name, presence: true
   
  
 
-#def check_employee_name
- #   if employee_name = "nil"
-#     errors.add(:employee_name, "-Must enter a valid Employee name")
-  #  end
- # end
 private
 
     def create_remember_token

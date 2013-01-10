@@ -13,8 +13,7 @@
     </div>
   <% end %>
 <div class="editprofile">
-  <!--<%= f.hidden_field :password, :value => :password %>
-  <%= f.hidden_field :password_confirmation, :value => :password %>-->
+ 
   <div class="field">
     <%= f.label :employee_name %><br />
     <%= f.text_field :employee_name %>
@@ -23,17 +22,6 @@
     <%= f.label :employee_email %><br />
     <%= f.text_field :employee_email %>
   </div>
-
- <!-- <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password %>
-    </div>
-     <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation %>
-    </div>-->
-
-    
 
 
   <div class="field">
@@ -82,6 +70,6 @@
 </div>
 <% end %>
 
-<%= link_to 'Show', @employee %> |
+<%= link_to 'Show My Profile', @employee %> |
 <%= link_to 'All employees', employees_path %> |
 <%= link_to 'Signout', signout_path, method: "delete" %>

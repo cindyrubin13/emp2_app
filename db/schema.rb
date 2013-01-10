@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121228045748) do
+ActiveRecord::Schema.define(:version => 20130109175348) do
 
   create_table "employees", :force => true do |t|
     t.string   "employee_name"
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(:version => 20121228045748) do
     t.string   "password"
     t.string   "password_confirmation"
     t.string   "remember_token"
+    t.string   "description"
   end
 
   add_index "employees", ["remember_token"], :name => "index_employees_on_remember_token"
@@ -37,11 +38,15 @@ ActiveRecord::Schema.define(:version => 20121228045748) do
   create_table "project_requests", :force => true do |t|
     t.string   "project_help"
     t.integer  "employee_id"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
     t.datetime "start_date"
     t.datetime "end_date"
     t.string   "status"
+    t.string   "title"
+    t.string   "relevant_skill"
+    t.string   "office"
+    t.string   "group"
   end
 
   create_table "request_selections", :force => true do |t|
